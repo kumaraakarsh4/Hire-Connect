@@ -1,10 +1,15 @@
 import express from 'express';
 import { ENV } from './lib/env.js';
 import { connectDB } from './lib/db.js';
+import cors from 'cors';
 
 const app = express()
 console.log(ENV.PORT);
 console.log(ENV.DB_URL);
+
+// credetains true means server allow to browser to iclude cookies on request
+
+app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
 
 
 app.get("/" , (req,res)=>{
