@@ -11,6 +11,7 @@ console.log(ENV.DB_URL);
 
 // credetains true means server allow to browser to iclude cookies on request
 
+
 app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
 
 
