@@ -19,7 +19,7 @@ const syncUser = inngest.createFunction(
         }
        await User.create(newUser)
     }
-)
+);
 
 const deleteUserFromDB = inngest.createFunction(
     {id:"delete-user-from-db"},
@@ -28,5 +28,6 @@ const deleteUserFromDB = inngest.createFunction(
         await connectDB()
         const {id} = event.data
         await User.deleteOne({clerkId:id});
-)
+    }
+);
 export const functions = [syncUser , deleteUserFromDB];
