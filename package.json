@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "netlify-plugin-inngest": "^1.0.1"
+  }
+}
