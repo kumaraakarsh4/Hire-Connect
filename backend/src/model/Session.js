@@ -6,10 +6,30 @@ const sessionSchema = new mongoose.Schema({
     },
     diffculty:{
         type:String,
-        Enum:["Easy" , "Medium" ,  "Hard"],
+        enum:["Easy" , "Medium" ,  "Hard"],
          required:true,
     },
-})
+    host:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"user",
+        required:true,
+    },
+    participants: {
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"user",
+      default:null,   
+    },
+    status:{
+      type:String,
+      enum : ["Active" , "Completed"],
+      default:"Active"  
+    },
+    // stream video call id
+    callId:{
+        type:String,
+        default:"",
+    },
+},{timestamps:true});
 const Session = mongoose.model("Session" , sessionSchema)
 
 export default Session
