@@ -1,5 +1,6 @@
 import { requireAuth } from '@clerk/express';
 import user from '../model/user.js';
+import { err } from 'inngest/types';
 export const protectRoute=[
     requireAuth(),
     async (req,res,next)=>{
@@ -11,6 +12,8 @@ export const protectRoute=[
             req.user = user;
             next();
         } catch (error) {
+            console.error("Error in the protective middleware",error);
+            res.status(500).json({msg:"Error in the internal server error"});
             
         }
     }
