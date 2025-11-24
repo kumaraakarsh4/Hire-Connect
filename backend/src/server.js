@@ -7,7 +7,7 @@ import { inngest , functions } from './lib/inngest.js';
 import { clerkMiddleware } from '@clerk/express';
 
 import chatRoutes from './routes/chatRoutes.js';
-import SessionRoutes from './routes/sessionRoutes.js';
+import sessionRoutes from './routes/sessionRoutes.js';
 
 const app = express()
 console.log(ENV.PORT);
