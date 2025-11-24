@@ -9,7 +9,7 @@ if (!STREAM_API_KEY || !STREAM_API_SECRET) {
     throw new Error("STREAM_API_KEY and STREAM_API_SECRET environment variables must be set.");
 }
 
-const client = new StreamChat(STREAM_API_KEY, STREAM_API_SECRET);
+ export const chatClient = new StreamChat(STREAM_API_KEY, STREAM_API_SECRET);
 
 /**
  * Creates or updates a user in Stream Chat.
