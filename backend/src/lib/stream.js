@@ -1,4 +1,8 @@
-import { StreamChat } from 'stream-chat'; // FIX: Correctly import the capitalized class
+import { StreamChat } from 'stream-chat';
+import {StreamClient} from '@stream-io/node-sdk';
+import {ENV} from './env.js';
+
+// FIX: Correctly import the capitalized class
 
 // NOTE: You must have these environment variables set in your project!
 const STREAM_API_KEY = process.env.STREAM_API_KEY; 
@@ -8,8 +12,9 @@ const STREAM_API_SECRET = process.env.STREAM_API_SECRET;
 if (!STREAM_API_KEY || !STREAM_API_SECRET) {
     throw new Error("STREAM_API_KEY and STREAM_API_SECRET environment variables must be set.");
 }
+ export  const streamClient = new StreamClient(STREAM_API_KEY, STREAM_API_SECRET); // this is for video calls
+ export const chatClient = new StreamChat(STREAM_API_KEY, STREAM_API_SECRET); // this is for chat features
 
- export const chatClient = new StreamChat(STREAM_API_KEY, STREAM_API_SECRET);
 
 /**
  * Creates or updates a user in Stream Chat.
