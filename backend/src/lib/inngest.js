@@ -1,8 +1,8 @@
-import inngest from "inngest";
+import {Inngest} from "inngest";
 import { connectDB } from "./db.js";
 import User from "../model/user.js";
-import { upsertStreamUser } from "./stream.js";
-import { deleteStreamUser } from "./stream.js";
+// FIX: Import the functions directly, not the User model methods
+import { upsertStreamUser, deleteStreamUser } from "./stream.js";
 
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "Hire-Connect" });
@@ -19,13 +19,15 @@ const syncUser = inngest.createFunction(
             name:`${first_name || ""} ${last_name || ""}`,
             profileImage: image_url
         }
-       await User.create(newUser)
-       await User.upsertStreamuser({
-        id: newUser.clerkId.tostring(),
-        name: newUser.name,
-        Image: newUser.profileImage
+        await User.create(newUser)
 
-       });
+        // FIX 1: Call the imported function (upsertStreamUser), not a User model method (User.upsertStreamuser)
+        // FIX 2: Correct property name from 'Image' to 'image'
+        await upsertStreamUser({
+            id: newUser.clerkId.toString(),
+            name: newUser.name,
+            image: newUser.profileImage
+        });
     }
 );
 
@@ -36,7 +38,10 @@ const deleteUserFromDB = inngest.createFunction(
         await connectDB()
         const {id} = event.data
         await User.deleteOne({clerkId:id});
-        await User.deleteStreamUser(id.tostring());
+
+        // FIX 3: Call the imported function (deleteStreamUser), not a User model method (User.deleteStreamUser)
+        await deleteStreamUser(id.toString());
     }
 );
+
 export const functions = [syncUser , deleteUserFromDB];

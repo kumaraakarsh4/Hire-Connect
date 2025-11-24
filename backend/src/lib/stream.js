@@ -1,33 +1,50 @@
-import {streamchat} from 'stream-chat';
-import { ENV } from './env.js';
+import { StreamChat } from 'stream-chat'; // FIX: Correctly import the capitalized class
 
-const apiKey = ENV.STREAM_API_KEY;
-const apiSecret = ENV.STREAM_API_SECRET;
+// NOTE: You must have these environment variables set in your project!
+const STREAM_API_KEY = process.env.STREAM_API_KEY; 
+const STREAM_API_SECRET = process.env.STREAM_API_SECRET;
 
-if(!apiKey || !apiSecret){
-    console.error("STREAM_API_KEY or STREAM_API_SECRET is missing ");
-
+// Initialize the Stream client
+if (!STREAM_API_KEY || !STREAM_API_SECRET) {
+    throw new Error("STREAM_API_KEY and STREAM_API_SECRET environment variables must be set.");
 }
 
-export const chatClient = streamchat.getInstance(apiKey,apiSecret);
+const client = new StreamChat(STREAM_API_KEY, STREAM_API_SECRET);
 
-export const upsertStreamUser = async(userData) =>{
+/**
+ * Creates or updates a user in Stream Chat.
+ * @param {object} user - User data
+ * @param {string} user.id - Clerk ID
+ * @param {string} user.name - User display name
+ * @param {string} user.image - URL for the profile image
+ */
+export const upsertStreamUser = async ({ id, name, image }) => {
+    console.log(`[StreamChat] Upserting user: ${name} (${id})`);
     try {
-        await chatClient.upsertUser(userData)
-         console.log("Stream user updated successfully:" , userData);
+        await client.upsertUser({
+            id: id,
+            name: name,
+            image: image,
+            role: 'user' // Default role
+        });
+        console.log(`[StreamChat] User ${id} successfully upserted.`);
     } catch (error) {
-        console.error("Error upserting Stream user:" , error);
-        
+        console.error(`[StreamChat] Error upserting user ${id}:`, error);
+        throw error;
     }
-}
+};
 
-export const deleteStreamUser = async(userId) =>{
+/**
+ * Deletes a user from Stream Chat.
+ * @param {string} userId - The ID of the user to delete
+ */
+export const deleteStreamUser = async (userId) => {
+    console.log(`[StreamChat] Deleting user: ${userId}`);
     try {
-        await chatClient.deleteStreamUser(userId)
-        console.log("Stream user deleted successfully:" , userId);
-        
+        await client.deleteUser(userId);
+        console.log(`[StreamChat] User ${userId} successfully deleted.`);
     } catch (error) {
-        console.error("Error deleting the  Stream user" , error);
-        
+        // Log error but don't crash if the user already doesn't exist
+        console.warn(`[StreamChat] Could not delete user ${userId} (may already be gone):`, error.message);
     }
-}
+};
