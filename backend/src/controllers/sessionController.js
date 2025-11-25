@@ -1,5 +1,5 @@
 import { chatClient, streamClient } from "../lib/stream.js";
-import Session from "../models/Session.js";
+import Session from '../models/session.js'; // Or another variation
 
 export async function createSession(req, res) {
   try {
@@ -41,7 +41,7 @@ export async function createSession(req, res) {
   }
 }
 
-export async function getActiveSessions(_, res) {
+export async function getActiveSession(_, res) {
   try {
     const sessions = await Session.find({ status: "active" })
       .populate("host", "name profileImage email clerkId")
@@ -56,7 +56,7 @@ export async function getActiveSessions(_, res) {
   }
 }
 
-export async function getMyRecentSessions(req, res) {
+export async function getMyRecentSession(req, res) {
   try {
     const userId = req.user._id;
 

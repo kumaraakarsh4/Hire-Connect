@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 const sessionSchema = new mongoose.Schema({
     problem:{
     type:String,
@@ -7,7 +8,7 @@ const sessionSchema = new mongoose.Schema({
     diffculty:{
         type:String,
         enum:["Easy" , "Medium" ,  "Hard"],
-         required:true,
+          required:true,
     },
     host:{
         type:mongoose.Schema.Types.ObjectId,
@@ -17,7 +18,7 @@ const sessionSchema = new mongoose.Schema({
     participants: {
       type:mongoose.Schema.Types.ObjectId,
       ref:"user",
-      default:null,   
+      default:null,  
     },
     status:{
       type:String,
@@ -30,6 +31,9 @@ const sessionSchema = new mongoose.Schema({
         default:"",
     },
 },{timestamps:true});
+
+// Define the model
 const Session = mongoose.model("Session" , sessionSchema)
 
+// Export the model using the default export
 export default Session

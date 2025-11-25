@@ -1,6 +1,6 @@
 import {Inngest} from "inngest";
 import { connectDB } from "./db.js";
-import User from "../model/user.js";
+import User from "../models/user.js";
 // FIX: Import the functions directly, not the User model methods
 import { upsertStreamUser, deleteStreamUser } from "./stream.js";
 
