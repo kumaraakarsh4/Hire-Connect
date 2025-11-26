@@ -6,6 +6,7 @@ function App() {
   return (
     <>
       <h1>Welcome to the server! </h1>
+      <button className='btn btn-primary'>Click me</button>
 
       {/* 1. SHOW WHEN SIGNED OUT */}
       <SignedOut>
