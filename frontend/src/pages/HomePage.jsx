@@ -1,24 +1,14 @@
-import { SignedIn, SignedOut, SignInButton, UserButton, SignOutButton } from '@clerk/clerk-react';
-import React from 'react';
-import toast from 'react-hot-toast';
+
 
 function HomePage() {
   return (
-    <div>
-        <button className='btn btn-secondary' onClick={()=>
-            toast.error("This is a success toats")
-        }>Click me</button>
-        <SignedOut>
-            <SignInButton mode='modal'>
-                <button>Log In</button>
+    <div className="bg-gradient-to-br from-base-100 via-base-200 to-base-300">
+       <nav className="bg-base-100/80 backdrop-blur-md border-b border-primary/20 sticky top-0 z-50 shadow-lg">
+       <div className="max-w-7xl mx-auto p-4 flex items-center justify-between">
 
-            </SignInButton>
-        </SignedOut>
-        <SignedIn>
-            <SignOutButton/>
+       </div>
 
-        </SignedIn>
-        <UserButton/>
+       </nav>
     </div>
   )
 }
