@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRightIcon, SparklesIcon, ZapIcon, CheckIcon, VideoIcon, Code2Icon, UsersIcon } from 'lucide-react';
+import { SignInButton } from '@clerk/clerk-react';
 
 // Main application component
 function App() {
@@ -54,13 +55,14 @@ function App() {
                     </a>
 
                     {/* Authentication button */}
-                    <button
-                        className='group px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-all hover:scale-105 flex items-center gap-2'
-                        onClick={() => handleAction('Sign In')} // Replaced Clerk SignInButton with dummy handler
-                    >
-                        <span>Get Started</span>
-                        <ArrowRightIcon className='size-4 group-hover:translate-x-0.5 transition-transform ' />
-                    </button>
+                   <SignInButton mode='modal'>
+            <button className='group px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-all hover:scale-105 flex items-center gap-2'>
+                <span>Get Started</span>
+                <ArrowRightIcon className='size-4 group-hover:translate-x-0.5 transition-transform '/>
+
+            </button>
+        </SignInButton>
+        
                 </div>
             </nav>
 
@@ -105,10 +107,12 @@ function App() {
 
                         {/* CTA Buttons */}
                         <div className="flex flex-wrap gap-4">
-                            <button className="btn btn-primary btn-lg" onClick={() => handleAction('Start Coding Now')}>
+                            <SignInButton mode='modal'>
+                            <button className="btn btn-primary btn-lg" onClick={() => handleAction('Start Coding Now',SignInButton)}>
                                 Start Coding Now
                                 <ArrowRightIcon className="size-5" />
                             </button>
+                            </SignInButton>
 
                             <button className="btn btn-outline btn-lg" onClick={() => handleAction('Watch Demo')}>
                                 <VideoIcon className="size-5" />
