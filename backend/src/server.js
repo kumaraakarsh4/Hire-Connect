@@ -27,6 +27,10 @@ app.get("/health",(req,res)=>{
     res.status(200).json({msg:"Api is up and running"})
 })
 
+app.get("/absingh",(req,res)=>{
+    res.status(200).json({msg:"yes ab singh is connected to database"})
+})
+
 
 
 app.get("/" , (req,res)=>{

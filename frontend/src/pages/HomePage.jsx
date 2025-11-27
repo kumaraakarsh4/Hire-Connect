@@ -31,8 +31,11 @@ function HomePage() {
        </div>
 
        </nav>
+
+      {/* Hero Section */}
+      
     </div>
-  )
+  );
 }
 
 export default HomePage
