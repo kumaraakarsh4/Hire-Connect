@@ -1,14 +1,58 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRightIcon, SparklesIcon, ZapIcon, CheckIcon, VideoIcon, Code2Icon, UsersIcon } from 'lucide-react';
 import { SignInButton } from '@clerk/clerk-react';
 
 // Main application component
 function App() {
+    // 1. STATE: Track visibility and previous scroll position
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
     // Dummy function for navigation/auth buttons, replacing external libs like react-router Link and Clerk SignInButton
     const handleAction = (action) => {
         console.log(`Action triggered: ${action}`);
         // In a real application, replace this with your actual routing/authentication logic
     };
+
+    // 2. EFFECT: Handle scroll logic
+    useEffect(() => {
+        let hideTimer;
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            
+            // Clear any existing timer when scrolling starts/stops
+            clearTimeout(hideTimer);
+
+            if (currentScrollY > lastScrollY && currentScrollY > 100) { 
+                // Scrolling Down & past the initial threshold (100px)
+                if (isVisible) {
+                    // Start timer to hide after 2 seconds
+                    hideTimer = setTimeout(() => {
+                        setIsVisible(false); // Hide the navbar after 2 seconds
+                    }, 2000); // 2-second delay
+                }
+            } else if (currentScrollY < lastScrollY) {
+                // Scrolling Up
+                setIsVisible(true); // Show the navbar immediately
+            } else if (currentScrollY <= 100) {
+                // At the very top of the page
+                setIsVisible(true); // Always visible at the top
+            }
+
+            // Update the last scroll position for the next check
+            setLastScrollY(currentScrollY);
+        };
+
+        // Attach the scroll listener
+        window.addEventListener('scroll', handleScroll);
+
+        // Cleanup: remove listener and clear timer when component unmounts
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            clearTimeout(hideTimer);
+        };
+    }, [lastScrollY, isVisible]); 
 
     return (
         <div className="bg-gradient-to-br from-base-100 via-base-200 to-base-300 min-h-screen">
@@ -34,8 +78,12 @@ function App() {
                 `}
             </style>
 
-            {/* Navigation */}
-            <nav className="bg-base-100/80 backdrop-blur-md border-b border-primary/20 sticky top-0 z-50 shadow-lg">
+            {/* Navigation - UPDATED with opacity transition */}
+            <nav className={`
+                bg-base-100/80 backdrop-blur-md border-b border-primary/20 sticky top-0 z-50 shadow-lg 
+                transform transition-all duration-500 ease-in-out 
+                ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'} 
+            `}>
                 <div className="max-w-7xl mx-auto p-4 flex items-center justify-between">
                     {/* Logo/Brand Link */}
                     <a
@@ -56,13 +104,11 @@ function App() {
 
                     {/* Authentication button */}
                    <SignInButton mode='modal'>
-            <button className='group px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-all hover:scale-105 flex items-center gap-2'>
-                <span>Get Started</span>
-                <ArrowRightIcon className='size-4 group-hover:translate-x-0.5 transition-transform '/>
-
-            </button>
-        </SignInButton>
-        
+                        <button className='group px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-all hover:scale-105 flex items-center gap-2'>
+                            <span>Get Started</span>
+                            <ArrowRightIcon className='size-4 group-hover:translate-x-0.5 transition-transform '/>
+                        </button>
+                    </SignInButton>
                 </div>
             </nav>
 
