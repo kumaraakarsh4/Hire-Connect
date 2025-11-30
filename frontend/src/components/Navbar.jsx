@@ -47,7 +47,7 @@ className='group flex items-center gap-3 hover:scale-105 transition-transform du
      <span className='font-medium hidden sm:inline'>Dashboard</span>
         </div>
     </Link>
-    <div className='ml-4 mt-2 '> <UserButton/></div>
+    <div className='ml-4 mt-1'> <UserButton/></div>
    
 
 </div>
