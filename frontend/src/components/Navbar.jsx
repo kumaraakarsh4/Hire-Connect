@@ -3,8 +3,10 @@ import { BookOpenIcon, LayoutDashboardIcon, SparklesIcon } from 'lucide-react'
 import React from 'react'
 import { Link, useLocation } from 'react-router'
 
+
 function Navbar() {
     const location = useLocation();
+    
 
     const isActive = (path) => location.pathname === path ;
   return (
