@@ -29,6 +29,7 @@ function ProblemPage() {
   // update problem when URL param changes
   useEffect(() => {
     if (id && PROBLEMS[id]) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCurrentProblemId(id);
       setCode(PROBLEMS[id].starterCode[selectedLanguage]);
       setOutput(null);
