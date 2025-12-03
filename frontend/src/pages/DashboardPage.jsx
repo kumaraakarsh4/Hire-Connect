@@ -10,7 +10,11 @@ function DashboardPage() {
   const [roomConfig, setRoomConfig] = useState({ problem: "", difficulty: "" });
  const useCreateSessionMutation= useCreateSession()
  const {data:activeSessionsData,isLoading:loadingActiveSessions} = useActiveSessions();
- const {data:recentSessionData, isLoading:loadingRecentSessions}= useMyRecentSessions()
+ const {data:recentSessionData, isLoading:loadingRecentSessions }= useMyRecentSessions()
+ 
+  const handleCreateRoom = () => {
+    if (!roomConfig.problem || !roomConfig.difficulty) return;
+
 
   return (
     <div>DashboardPage</div>
