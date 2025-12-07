@@ -31,6 +31,9 @@ function DashboardPage() {
 
   const activeSessions = activeSessionsData?.sessions || [];
   const recentSessions = recentSessionsData?.sessions || [];
+  
+  const handleCreateRoom = () => {
+    if (!roomConfig.problem || !roomConfig.difficulty) return;
 
 
   return (
