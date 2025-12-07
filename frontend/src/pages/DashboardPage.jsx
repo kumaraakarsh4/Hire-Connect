@@ -30,6 +30,7 @@ function DashboardPage() {
   };
 
   const activeSessions = activeSessionsData?.sessions || [];
+  const recentSessions = recentSessionsData?.sessions || [];
 
 
   return (
