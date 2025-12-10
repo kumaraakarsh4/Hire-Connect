@@ -35,6 +35,13 @@ function DashboardPage() {
   const handleCreateRoom = () => {
     if (!roomConfig.problem || !roomConfig.difficulty) return;
 
+      createSessionMutation.mutate(
+      {
+        problem: roomConfig.problem,
+        difficulty: roomConfig.difficulty.toLowerCase(),
+      },
+      {
+
 
   return (
     <div>DashboardPage</div>
