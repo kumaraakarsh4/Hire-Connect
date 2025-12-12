@@ -49,6 +49,7 @@ function DashboardPage() {
       }
     );
   };
+    const activeSessions = activeSessionsData?.sessions || [];
 
 
   return (
