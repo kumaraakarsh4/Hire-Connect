@@ -61,7 +61,10 @@ function DashboardPage() {
 
 
   return (
-    <div>DashboardPage</div>
+     <>
+      <div className="min-h-screen bg-base-300">
+        <Navbar />
+        <WelcomeSection onCreateSession={() => setShowCreateModal(true)} />
   )
 }
 
