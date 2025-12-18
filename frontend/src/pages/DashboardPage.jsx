@@ -73,6 +73,12 @@ function DashboardPage() {
               activeSessionsCount={activeSessions.length}
               recentSessionsCount={recentSessions.length}
             />
+
+            <ActiveSessions
+              sessions={activeSessions}
+              isLoading={loadingActiveSessions}
+              isUserInSession={isUserInSession}
+            />
   )
 }
 
