@@ -79,13 +79,25 @@ function DashboardPage() {
               isLoading={loadingActiveSessions}
               isUserInSession={isUserInSession}
             />
-                />
+                
           </div>
 
           <RecentSessions sessions={recentSessions} isLoading={loadingRecentSessions} />
         </div>
       </div>
-  )
-}
 
-export default DashboardPage
+      <CreateSessionModal
+        isOpen={showCreateModal}
+        onClose={() => setShowCreateModal(false)}
+        roomConfig={roomConfig}
+        setRoomConfig={setRoomConfig}
+        onCreateRoom={handleCreateRoom}
+        isCreating={createSessionMutation.isPending}
+      />
+    </>
+  );
+}
+  
+
+
+export default DashboardPage;
