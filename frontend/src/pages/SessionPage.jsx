@@ -1,4 +1,5 @@
 import React from 'react'
+import { useUser } from "@clerk/clerk-react";
 
 function SessionPage() {
   return (
