@@ -10,10 +10,9 @@ import chatRoutes from './routes/chatRoutes.js';
 import sessionRoutes from './routes/sessionRoutes.js';
 
 const app = express()
-console.log(ENV.PORT);
-console.log(ENV.DB_URL);
 
-// credetains true means server allow to browser to iclude cookies on request
+
+// credetains true means server allow to browser to include cookies on request
 
 
 app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
