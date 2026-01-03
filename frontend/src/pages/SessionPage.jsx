@@ -7,3 +7,4 @@ import { executeCode } from "../lib/piston";
 import Navbar from "../components/Navbar";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { getDifficultyBadgeClass } from "../lib/utils";
+import { Loader2Icon, LogOutIcon, PhoneOffIcon } from "lucide-react";
