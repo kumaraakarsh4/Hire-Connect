@@ -15,3 +15,4 @@ import { StreamCall, StreamVideo } from "@stream-io/video-react-sdk";
 import VideoCallUI from "../components/VideoCallUI";
 function SessionPage() {
 const navigate = useNavigate();
+ const { id } = useParams();
