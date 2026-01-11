@@ -16,3 +16,4 @@ import VideoCallUI from "../components/VideoCallUI";
 function SessionPage() {
 const navigate = useNavigate();
  const { id } = useParams();
+ const { user } = useUser();
