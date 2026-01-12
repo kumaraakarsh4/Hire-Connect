@@ -17,3 +17,4 @@ function SessionPage() {
 const navigate = useNavigate();
  const { id } = useParams();
  const { user } = useUser();
+   const [output, setOutput] = useState(null);
