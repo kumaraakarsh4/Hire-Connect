@@ -18,3 +18,4 @@ const navigate = useNavigate();
  const { id } = useParams();
  const { user } = useUser();
    const [output, setOutput] = useState(null);
+     const [isRunning, setIsRunning] = useState(false);
