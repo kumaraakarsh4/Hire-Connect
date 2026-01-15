@@ -21,3 +21,4 @@ const navigate = useNavigate();
      const [isRunning, setIsRunning] = useState(false);
   const { data: sessionData, isLoading: loadingSession, refetch } = useSessionById(id);
    const joinSessionMutation = useJoinSession();
+    const endSessionMutation = useEndSession();
