@@ -23,3 +23,4 @@ const navigate = useNavigate();
    const joinSessionMutation = useJoinSession();
     const endSessionMutation = useEndSession();
      const session = sessionData?.session;
+      const isHost = session?.host?.clerkId === user?.id;
