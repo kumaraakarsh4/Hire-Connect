@@ -24,3 +24,6 @@ const navigate = useNavigate();
     const endSessionMutation = useEndSession();
      const session = sessionData?.session;
       const isHost = session?.host?.clerkId === user?.id;
+      
+      
+const { call, channel, chatClient, isInitializingCall, streamClient } = useStreamClient(
