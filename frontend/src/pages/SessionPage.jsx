@@ -27,3 +27,8 @@ const navigate = useNavigate();
       
       
 const { call, channel, chatClient, isInitializingCall, streamClient } = useStreamClient(
+   session,
+    loadingSession,
+    isHost,
+    isParticipant
+  );
