@@ -32,3 +32,5 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
     isHost,
     isParticipant
   );
+ // find the problem data based on session problem title
+  const problemData = session?.problem
