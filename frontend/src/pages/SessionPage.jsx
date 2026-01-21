@@ -34,3 +34,5 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
   );
  // find the problem data based on session problem title
   const problemData = session?.problem
+   ? Object.values(PROBLEMS).find((p) => p.title === session.problem)
+    : null;
