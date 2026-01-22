@@ -36,3 +36,4 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
   const problemData = session?.problem
    ? Object.values(PROBLEMS).find((p) => p.title === session.problem)
     : null;
+      const [selectedLanguage, setSelectedLanguage] = useState("javascript");
