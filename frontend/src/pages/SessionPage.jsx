@@ -37,3 +37,4 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
    ? Object.values(PROBLEMS).find((p) => p.title === session.problem)
     : null;
       const [selectedLanguage, setSelectedLanguage] = useState("javascript");
+      const [code, setCode] = useState(problemData?.starterCode?.[selectedLanguage] || "");
