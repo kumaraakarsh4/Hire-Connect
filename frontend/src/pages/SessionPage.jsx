@@ -38,3 +38,5 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
     : null;
       const [selectedLanguage, setSelectedLanguage] = useState("javascript");
       const [code, setCode] = useState(problemData?.starterCode?.[selectedLanguage] || "");
+       // auto-join session if user is not already a participant and not the host
+  useEffect(() => {
