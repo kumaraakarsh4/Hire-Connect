@@ -40,3 +40,4 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
       const [code, setCode] = useState(problemData?.starterCode?.[selectedLanguage] || "");
        // auto-join session if user is not already a participant and not the host
   useEffect(() => {
+      if (!session || !user || loadingSession) return;
