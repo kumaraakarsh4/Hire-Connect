@@ -42,3 +42,5 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
   useEffect(() => {
       if (!session || !user || loadingSession) return;
         if (isHost || isParticipant) return;
+         joinSessionMutation.mutate(id, { onSuccess: refetch });
+
