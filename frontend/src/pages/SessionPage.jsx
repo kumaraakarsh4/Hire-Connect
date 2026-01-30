@@ -46,4 +46,6 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
            // remove the joinSessionMutation, refetch from dependencies to avoid infinite loop
   }, [session, user, loadingSession, isHost, isParticipant, id]);
 
-
+// redirect the "participant" when session ends
+  useEffect(() => {
+    if (!session || loadingSession) return;
