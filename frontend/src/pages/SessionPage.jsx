@@ -49,3 +49,6 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
 // redirect the "participant" when session ends
   useEffect(() => {
     if (!session || loadingSession) return;
+    
+    if (session.status === "completed") navigate("/dashboard");
+  }, [session, loadingSession, navigate]);
