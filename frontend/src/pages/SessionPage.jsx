@@ -55,3 +55,5 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
    // update code when problem loads or changes
   useEffect(() => {
     if (problemData?.starterCode?.[selectedLanguage]) {
+      setCode(problemData.starterCode[selectedLanguage]);
+    }
