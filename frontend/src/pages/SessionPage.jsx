@@ -52,3 +52,6 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
     
     if (session.status === "completed") navigate("/dashboard");
   }, [session, loadingSession, navigate]);
+   // update code when problem loads or changes
+  useEffect(() => {
+    if (problemData?.starterCode?.[selectedLanguage]) {
