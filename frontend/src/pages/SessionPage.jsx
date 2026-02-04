@@ -57,3 +57,7 @@ const { call, channel, chatClient, isInitializingCall, streamClient } = useStrea
     if (problemData?.starterCode?.[selectedLanguage]) {
       setCode(problemData.starterCode[selectedLanguage]);
     }
+      }
+  }, [problemData, selectedLanguage]);
+
+  const handleLanguageChange = (e) => {
